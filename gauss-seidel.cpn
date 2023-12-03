@@ -199,9 +199,6 @@ fun isDiagonallyDominant(matrix) =
         checkDominant(matrix, 0)
     end;
                 </ml>
-                <ml id='ID1044582801'>
-                    (* New declaration *)
-                </ml>
             </block>
         </globbox>
         <page id='ID6'>
@@ -398,7 +395,8 @@ fun isDiagonallyDominant(matrix) =
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
-                    <text tool='CPN Tools' version='4.0.1'/>
+                    <text tool='CPN Tools' version='4.0.1'>
+                    </text>
                 </initmark>
             </place>
             <place id='ID0523987645'>
@@ -474,7 +472,8 @@ fun isDiagonallyDominant(matrix) =
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
-                    <text tool='CPN Tools' version='4.0.1'/>
+                    <text tool='CPN Tools' version='4.0.1'>
+                    </text>
                 </initmark>
             </place>
             <arc id='ID0523714977' orientation='PtoT' order='1'>
@@ -671,28 +670,32 @@ fun isDiagonallyDominant(matrix) =
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
-                    <text tool='CPN Tools' version='4.0.1'/>
+                    <text tool='CPN Tools' version='4.0.1'>
+                    </text>
                 </cond>
                 <time id='ID0524092062b'>
                     <posattr x='-801.000000' y='394.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
-                    <text tool='CPN Tools' version='4.0.1'/>
+                    <text tool='CPN Tools' version='4.0.1'>
+                    </text>
                 </time>
                 <code id='ID0524092062c'>
                     <posattr x='-801.000000' y='330.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
-                    <text tool='CPN Tools' version='4.0.1'/>
+                    <text tool='CPN Tools' version='4.0.1'>
+                    </text>
                 </code>
                 <priority id='ID0524092062d'>
                     <posattr x='-887.000000' y='330.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
-                    <text tool='CPN Tools' version='4.0.1'/>
+                    <text tool='CPN Tools' version='4.0.1'>
+                    </text>
                 </priority>
             </trans>
             <trans id='ID0524349304'>
@@ -718,21 +721,24 @@ fun isDiagonallyDominant(matrix) =
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
-                    <text tool='CPN Tools' version='4.0.1'/>
+                    <text tool='CPN Tools' version='4.0.1'>
+                    </text>
                 </time>
                 <code id='ID0524349304c'>
                     <posattr x='-130.000000' y='331.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
-                    <text tool='CPN Tools' version='4.0.1'/>
+                    <text tool='CPN Tools' version='4.0.1'>
+                    </text>
                 </code>
                 <priority id='ID0524349304d'>
                     <posattr x='-216.000000' y='331.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
-                    <text tool='CPN Tools' version='4.0.1'/>
+                    <text tool='CPN Tools' version='4.0.1'>
+                    </text>
                 </priority>
             </trans>
         </page>

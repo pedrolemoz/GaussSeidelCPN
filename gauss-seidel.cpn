@@ -124,7 +124,7 @@
                 <var id='ID0577487082'>
                     <type>
                         <id>
-                            INT
+                            REAL
                         </id>
                     </type>
                     <id>
@@ -198,6 +198,66 @@ fun isDiagonallyDominant(matrix) =
     in
         checkDominant(matrix, 0)
     end;
+                </ml>
+                <ml id='ID1643890315'>
+                    fun absolute x =
+    if x &gt;= 0.0 then x
+    else ~x;
+
+fun realEquals(x, y, tolerance) =
+    absolute(x - y) &lt; tolerance;
+
+fun listUpdate(n, x, xs) =
+    if n &lt; 0 then xs
+    else
+        let
+            fun updateAtIndex([], _, acc) = rev(x :: acc)
+              | updateAtIndex(y :: ys, i, acc) =
+                if i = 0 then revAppend(x, ys, acc)
+                else updateAtIndex(ys, i - 1, y :: acc)
+
+            and revAppend(x, lst, acc) =
+                case lst of
+                    [] =&gt; rev(x :: acc)
+                  | y :: ys =&gt; revAppend(x, ys, y :: acc)
+        in
+            updateAtIndex(xs, n, [])
+        end;
+fun zipElements (xs, ys) =
+    case (xs, ys) of
+        ([], []) =&gt; []
+      | (x::xs&apos;, y::ys&apos;) =&gt; (x, y) :: zipElements(xs&apos;, ys&apos;)
+      | (_, _) =&gt; raise Fail &quot;Lists do not have the same length&quot;;
+
+fun listAll pred xs =
+    case xs of
+        [] =&gt; true
+      | x :: rest =&gt; pred x andalso listAll pred rest;
+
+fun gaussSeidel (A, b, initialGuess, tolerance, maxIterations) =
+    let
+        val n = length initialGuess;
+
+        fun computeSigma (i, sigma, phi) =
+            if i = n then sigma
+            else computeSigma (i + 1, sigma + List.nth (List.nth (A, i), i) * List.nth (phi, i), phi);
+
+        fun updatePhi (i, newPhi, phi) =
+            if i = n then newPhi
+            else updatePhi (i + 1, listUpdate (i, (List.nth (b, i) - computeSigma (0, 0.0, phi)) / List.nth (List.nth (A, i), i), newPhi), phi);
+
+        fun gaussSeidelIter (phi, iterations) =
+            let
+                val newPhi = updatePhi (0, initialGuess, phi);
+            in
+                if listAll (fn (x, y) =&gt; realEquals (x, y, tolerance)) (zipElements (phi, newPhi)) orelse iterations &gt;= maxIterations
+                then newPhi
+                else gaussSeidelIter (newPhi, iterations + 1)
+            end;
+    in
+        gaussSeidelIter (initialGuess, 0)
+    end;
+
                 </ml>
             </block>
         </globbox>
@@ -304,21 +364,21 @@ fun isDiagonallyDominant(matrix) =
                     </text>
                 </marking>
                 <type id='ID0523421451a'>
-                    <posattr x='-443.000000' y='590.000000'/>
+                    <posattr x='-439.000000' y='590.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
                     <text tool='CPN Tools' version='4.0.1'>
-                        INT
+                        REAL
                     </text>
                 </type>
                 <initmark id='ID0523421451b'>
-                    <posattr x='-502.000000' y='603.000000'/>
+                    <posattr x='-503.000000' y='602.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
                     <text tool='CPN Tools' version='4.0.1'>
-                        1
+                        1.0
                     </text>
                 </initmark>
             </place>
@@ -362,7 +422,7 @@ fun isDiagonallyDominant(matrix) =
                 </initmark>
             </place>
             <place id='ID0523838719'>
-                <posattr x='117.000000' y='361.000000'/>
+                <posattr x='429.000000' y='361.000000'/>
                 <fillattr colour='White' pattern='Solid' filled='false'/>
                 <lineattr colour='Black' thick='1' type='Solid'/>
                 <textattr colour='Black' bold='false'/>
@@ -370,28 +430,28 @@ fun isDiagonallyDominant(matrix) =
                     Result
                 </text>
                 <ellipse w='100.000000' h='50.000000'/>
-                <token x='-1.000000' y='-4.000000'>
+                <token x='21.000000' y='8.000000'>
                     <text>
                         1
                     </text>
                 </token>
-                <marking x='5.000000' y='-2.000000' hidden='false'>
+                <marking x='61.000000' y='8.000000' hidden='false'>
                     <snap snap_id='0' anchor.horizontal='0' anchor.vertical='0'/>
                     <text>
-                        1`()
+                        1`[0.0,8133.66334739,3485.28429174]
                     </text>
                 </marking>
                 <type id='ID0523838719a'>
-                    <posattr x='126.000000' y='318.000000'/>
+                    <posattr x='429.000000' y='321.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
                     <text tool='CPN Tools' version='4.0.1'>
-                        UNIT
+                        ELEMENTS
                     </text>
                 </type>
                 <initmark id='ID0523838719b'>
-                    <posattr x='185.000000' y='394.000000'/>
+                    <posattr x='497.000000' y='394.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
@@ -420,7 +480,7 @@ fun isDiagonallyDominant(matrix) =
                     </text>
                 </marking>
                 <type id='ID0523987645a'>
-                    <posattr x='-115.000000' y='589.000000'/>
+                    <posattr x='-114.000000' y='589.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
@@ -429,12 +489,12 @@ fun isDiagonallyDominant(matrix) =
                     </text>
                 </type>
                 <initmark id='ID0523987645b'>
-                    <posattr x='-172.000000' y='605.000000'/>
+                    <posattr x='-172.000000' y='602.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
                     <text tool='CPN Tools' version='4.0.1'>
-                        1000
+                        10
                     </text>
                 </initmark>
             </place>
@@ -545,12 +605,12 @@ fun isDiagonallyDominant(matrix) =
                 <transend idref='ID0524349304'/>
                 <placeend idref='ID0523838719'/>
                 <annot id='ID0524509390a'>
-                    <posattr x='-24.000000' y='375.000000'/>
+                    <posattr x='137.000000' y='388.000000'/>
                     <fillattr colour='White' pattern='Solid' filled='false'/>
                     <lineattr colour='Black' thick='1' type='Solid'/>
                     <textattr colour='Black' bold='false'/>
                     <text tool='CPN Tools' version='4.0.1'>
-                        1`()
+                        gaussSeidel(Ax, b, initialAproximation, tolerance, maxIterations)
                     </text>
                 </annot>
                 <text>
